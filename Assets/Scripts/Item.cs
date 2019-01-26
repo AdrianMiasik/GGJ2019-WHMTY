@@ -23,7 +23,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (isAttached) return;
 
         m_DraggingPlane = transform as RectTransform;
-        transform.SetParent(transform.parent.parent, true);
+        transform.SetParent(transform.parent.parent.parent, true);
 
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(m_DraggingPlane, eventData.position, eventData.pressEventCamera, out m_dragOffset))
         {
@@ -58,11 +58,11 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             
             if (distance < threshold)
             {
-                Debug.LogError("find one slot");
                 PutItemInSlot(slot);
-                break;
+                return;
             }
         }
+        Destroy(gameObject);
     }
 
     private void PutItemInSlot(Slot slot)
