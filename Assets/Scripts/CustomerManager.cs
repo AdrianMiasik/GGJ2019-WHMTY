@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
-    public int numberOfSpawnpoints = 4;
-    public GameObject spawnpoint;
+    public SpawnpointManager spawnpointManager;
 
     private void Start()
     {
         Initialize();
     }
 
-    /// <summary>
-    /// Creates spawn points for the customers
-    /// </summary>
     private void Initialize()
     {
-        for (int i = 0; i < numberOfSpawnpoints; i++)
-        {
-            
-        }
+        spawnpointManager.Generate();
+        // TODO: Add crabs to the spawns
     }
 }
