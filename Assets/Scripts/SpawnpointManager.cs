@@ -14,8 +14,13 @@ public class SpawnpointManager : MonoBehaviour
     private int numberOfSpawnPoints;
     
     [SerializeField] private List<Spawnpoint> spawnpoints = new List<Spawnpoint>();
-    [SerializeField] public List<Spawnpoint> openSpawnpoints = new List<Spawnpoint>();
+    private List<Spawnpoint> openSpawnpoints = new List<Spawnpoint>();
 
+    public List<Spawnpoint> GetOpenSpawnpoints()
+    {
+        return openSpawnpoints;
+    }
+    
     /// <summary>
     /// Adds spawnpoints to the list. (Unless it has already been registered.)
     /// </summary>
@@ -119,7 +124,7 @@ public class SpawnpointManager : MonoBehaviour
     /// Returns a random open spawnpoint. If there are no open spawnpoints this will return null.
     /// </summary>
     /// <returns></returns>
-    public Spawnpoint GetOpenSpawnpoint()
+    public Spawnpoint FetchRandomOpenSpawnpoint()
     {
         if (openSpawnpoints.Count <= 0)
         {

@@ -53,7 +53,6 @@ public class CustomerManager : MonoBehaviour
             sp.customer = _customer;
             _customer.manager = this;
             
-            
             // Mark the spawnpoint as occupied
             sp.Occupy();
         }

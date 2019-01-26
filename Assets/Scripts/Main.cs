@@ -21,7 +21,7 @@ public class Main : MonoBehaviour
                 // A for Add
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    Spawnpoint spawn = spawnManager.GetOpenSpawnpoint();
+                    Spawnpoint spawn = spawnManager.FetchRandomOpenSpawnpoint();
                     if (spawn != null)
                     {
                         customerManager.CreateCustomer(spawn);

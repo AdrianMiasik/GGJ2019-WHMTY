@@ -24,7 +24,7 @@ public class Spawnpoint : MonoBehaviour
          return;
       }
       
-      manager.openSpawnpoints.Remove(this);
+      manager.GetOpenSpawnpoints().Remove(this);
       isOccupied = true;
    }
 
@@ -36,7 +36,7 @@ public class Spawnpoint : MonoBehaviour
          return;
       }
       
-      manager.openSpawnpoints.Add(this);
+      manager.GetOpenSpawnpoints().Add(this);
       isOccupied = false;
    }
 }
