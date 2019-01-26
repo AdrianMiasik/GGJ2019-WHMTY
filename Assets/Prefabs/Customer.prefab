@@ -108,3 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnpoint: {fileID: 0}
+  settings: {fileID: 11400000, guid: a6bcb1037dd3e2145a772e81568cb0d4, type: 2}
+  ui: {fileID: 0}
+  manager: {fileID: 0}

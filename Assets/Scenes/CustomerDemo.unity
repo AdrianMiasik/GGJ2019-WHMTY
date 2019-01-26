@@ -966,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerManager: {fileID: 511582294}
+  settings: {fileID: 11400000, guid: a6bcb1037dd3e2145a772e81568cb0d4, type: 2}
   spawnManager: {fileID: 1759712868}
 --- !u!4 &659665716
 Transform:
@@ -1109,7 +1110,7 @@ RectTransform:
   m_Children:
   - {fileID: 114070579}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1208,7 +1209,7 @@ RectTransform:
   m_Children:
   - {fileID: 1533873747}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1765,7 +1766,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Credits: Adrian, John, Han, Lu, and Mason.'
+  m_text: 'Credits: Adrian, John, Hyun, Lu, and Mason.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a3724296b3c3bdb4381ec499ca19afb1, type: 2}
   m_sharedMaterial: {fileID: 21783610695935296, guid: a3724296b3c3bdb4381ec499ca19afb1,
@@ -1835,7 +1836,7 @@ MonoBehaviour:
   m_margin: {x: 2, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 42
+    characterCount: 43
     spriteCount: 0
     spaceCount: 6
     wordCount: 7
