@@ -21,7 +21,6 @@ public class Slot : MonoBehaviour
     
     public void AttachItem(Item item)
     {
-        Debug.LogError("Attached item: " + (int)item.Type);
         attachedItem = item;
     }
 }
