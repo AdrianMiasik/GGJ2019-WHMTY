@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     public GameObject shellPrefab;
     public Transform shellSpawner;
+    public Shell shell;
 
     public TMPro.TextMeshProUGUI scoreText;
     public int score;
@@ -21,7 +22,8 @@ public class GameManager : Singleton<GameManager>
 
     public void CreateNewShell()
     {
-        Instantiate(shellPrefab, shellSpawner);
+        GameObject shellGO = Instantiate(shellPrefab, shellSpawner);
+        shell = shellGO.GetComponent<Shell>();
     }
 
     private void UpdateScore()
