@@ -6,6 +6,11 @@ public class ImageRandomColorOnStart : MonoBehaviour
 {
     public Image image;
 
+    private void Start()
+    {
+        GenerateRandomColor();
+    }
+
     private void Reset()
     {
         if (image == null)
