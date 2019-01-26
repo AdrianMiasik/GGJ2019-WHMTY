@@ -53,5 +53,6 @@ ehthumbs.db
 Thumbs.db
 
 # Jetbrains Rider Files
+.idea/
 Assets/Plugins/Editor/JetBrains/
 Assets/Plugins/Editor/JetBrains.meta
