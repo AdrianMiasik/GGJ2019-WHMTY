@@ -11,6 +11,11 @@ public class Customer : MonoBehaviour
 
     [SerializeField] private Sprite m_angryFace;
 
+    private void Start()
+    {
+        m_customerImage = GetComponent<Image>();
+    }
+
     private void Update()
     {
         m_timer += Time.deltaTime;
@@ -25,6 +30,14 @@ public class Customer : MonoBehaviour
         }
     }
 
+    public void OnShellReceived()
+    {
+        //TODO: Check how many slots are matching
+        //TODO: Points based on how many are matching
+        //TODO: Lose point if nothing matches
+        //TODO: Bonus point if all match
+    }
+
     private void GetAngry()
     {
         m_customerImage.sprite = m_angryFace;
@@ -35,6 +48,7 @@ public class Customer : MonoBehaviour
         //TODO: Lose Score
         //TODO: Clear customer slot
         //TODO: Show Walkaway animation
+        //TODO: Destroy or ObjectPool
     }
 }
     
