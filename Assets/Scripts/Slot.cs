@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    enum SlotType
-    {
-        one = 1,
-        two,
-        three,
-        four
-    }
-
     // target item
-    private SlotType targetItem;
-    private SlotType attachedItem;
+    public bool IsAttached { get { return attachedItem; } }
+    private Item.ItemType targetItem;
+    private Item attachedItem;
 
     public void InitSlot()
     {
@@ -23,16 +16,12 @@ public class Slot : MonoBehaviour
 
     public void AssignTargetItem()
     {
-        targetItem = (SlotType)Random.Range(1, 4);
+        targetItem = (Item.ItemType)Random.Range(1, 4);
     }
     
-    private void AttachItem(SlotType item)
+    public void AttachItem(Item item)
     {
+        Debug.LogError("Attached item: " + (int)item.Type);
         attachedItem = item;
-    }
-
-    private void DetachItem()
-    {
-        attachedItem = 0;
     }
 }

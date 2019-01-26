@@ -11,7 +11,6 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     public List<Slot> Slots;
 
     private RectTransform m_DraggingPlane;
-    private Vector3 m_dragOffset;
 
     private void Start()
     {
@@ -41,10 +40,6 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         ShrinkShell();
         m_DraggingPlane = transform as RectTransform;
 
-        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(m_DraggingPlane, eventData.position, eventData.pressEventCamera, out m_dragOffset))
-        {
-            m_dragOffset = transform.GetComponent<RectTransform>().position - m_dragOffset;
-        }
         SetDraggedPosition(eventData);
     }
 
@@ -69,7 +64,7 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         Vector3 globalMousePos;
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(m_DraggingPlane, data.position, data.pressEventCamera, out globalMousePos))
         {
-            rt.position = globalMousePos + m_dragOffset;
+            rt.position = globalMousePos;
         }
     }
 }
