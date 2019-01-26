@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3060576881328972499}
   - component: {fileID: 3060576881328972500}
   - component: {fileID: 3060576881328972501}
-  - component: {fileID: 4491330971815222130}
   - component: {fileID: 3060576881328972498}
   m_Layer: 5
   m_Name: Spawnpoint
@@ -60,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.84079397, g: 0.10912761, b: 0.16687272, a: 1}
+  m_Color: {r: 0.24326697, g: 0.23684867, b: 0.24068433, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -76,18 +75,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &4491330971815222130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3060576881328972496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e00ceedab16fc429bd0b5a3eb3038a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3060576881328972498
 MonoBehaviour:
   m_ObjectHideFlags: 0
