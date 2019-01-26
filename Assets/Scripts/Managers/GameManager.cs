@@ -8,8 +8,10 @@ public class GameManager : Singleton<GameManager>
     public Transform shellSpawner;
     public Shell shell;
 
-    public TMPro.TextMeshProUGUI scoreText;
-    public int score;
+    public Transform ratingIcons;
+    private int customerCount;
+    private int totalScore;
+    private int averageRating;
 
     public Transform lifeIcons;
     public int life = 5;
@@ -17,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         CreateNewShell();
-        UpdateScore();
+        UpdateRatingIcon();
     }
 
     public void CreateNewShell()
@@ -26,12 +28,36 @@ public class GameManager : Singleton<GameManager>
         shell = shellGO.GetComponent<Shell>();
     }
 
-    private void UpdateScore()
+    /// <summary>
+    /// Rates the store.
+    /// </summary>
+    /// <returns>Average.</returns>
+    /// <param name="rate">Rate between 1 - 10, each represent half star.</param>
+    public int RateStore(int rate)
     {
-        scoreText.text = string.Format("Score: {0}", score);
+        totalScore += rate;
+        customerCount++;
+        averageRating = totalScore / customerCount;
+        UpdateRatingIcon();
+        return averageRating;
     }
 
-    private void UpdateLife()
+    private void UpdateRatingIcon()
+    {
+        for (int i = 0; i < ratingIcons.childCount; i++)
+        {
+            if (i <= averageRating - 1)
+            {
+                ratingIcons.GetChild(i).gameObject.SetActive(true);
+            }
+            else
+            {
+                ratingIcons.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void UpdateLifeIcon()
     {
         for (int i = 0; i < lifeIcons.childCount; i++)
         {
