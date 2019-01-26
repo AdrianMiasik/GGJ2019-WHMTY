@@ -6,7 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     public GameObject shellPrefab;
     public Transform shellSpawner;
-    public Shell shell;
+    public Shell shell { get; set; }
 
     public Transform ratingIcons;
     private int customerCount;

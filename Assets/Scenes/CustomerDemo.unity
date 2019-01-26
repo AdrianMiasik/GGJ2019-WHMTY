@@ -765,8 +765,7 @@ MonoBehaviour:
   shellPrefab: {fileID: 2912996228456734865, guid: c33d9f05e6032694a956cd21929ea7db,
     type: 3}
   shellSpawner: {fileID: 202186252}
-  shell: {fileID: 0}
-  ratingIcons: {fileID: 0}
+  ratingIcons: {fileID: 1554840727}
   lifeIcons: {fileID: 1889159085}
   life: 5
 --- !u!114 &659665718
@@ -2250,7 +2249,7 @@ GameObject:
   - component: {fileID: 1554840729}
   - component: {fileID: 1554840728}
   m_Layer: 5
-  m_Name: Store Ratings
+  m_Name: Rating Icons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
