@@ -75,12 +75,18 @@ public class SpawnpointManager : MonoBehaviour
 
         Spawnpoint lastRegisteredSpawn = spawnpoints[spawnpoints.Count - 1];
 
-        if (lastRegisteredSpawn.isOccupied)
+        if (lastRegisteredSpawn.IsOccupied && lastRegisteredSpawn.customer != null)
         {
-            Debug.LogWarning("Please get rid of the customer on the spawnpoint if you want to destroy this spawnpoint.");
+            lastRegisteredSpawn.customer.Remove();
+        }
+
+        Deregister(lastRegisteredSpawn);
+
+        if (openSpawnpoints.Contains(lastRegisteredSpawn))
+        {
+            openSpawnpoints.Remove(lastRegisteredSpawn);
         }
         
-        Deregister(lastRegisteredSpawn);
         Destroy(lastRegisteredSpawn.gameObject);
     }
     
@@ -101,7 +107,8 @@ public class SpawnpointManager : MonoBehaviour
     public void Create()
     {
         GameObject spawnObj = Instantiate(spawnpointPrefab, spawnpointContainer.transform);
-        Spawnpoint spawnpoint = spawnObj.AddComponent<Spawnpoint>();    
+        Spawnpoint spawnpoint = spawnObj.AddComponent<Spawnpoint>();   
+        spawnpoint.ProvideSpawnpointManager(this);
         
         Register(spawnpoint);
         openSpawnpoints.Add(spawnpoint);
@@ -116,7 +123,12 @@ public class SpawnpointManager : MonoBehaviour
     {
         if (openSpawnpoints.Count <= 0)
         {
-            Debug.LogAssertion("There are no open spawnpoints. Please wait or create a new spawnpoint using Create()");
+            if (Developer.showMessages)
+            {
+                Debug.Log(
+                    "There are no open spawnpoints. Please create a new spawnpoint using Create()");
+            }
+
             return null;
         }
 

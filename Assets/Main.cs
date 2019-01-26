@@ -21,7 +21,11 @@ public class Main : MonoBehaviour
                 // A for Add
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    customerManager.CreateCustomer(spawnManager.GetOpenSpawnpoint());
+                    Spawnpoint spawn = spawnManager.GetOpenSpawnpoint();
+                    if (spawn != null)
+                    {
+                        customerManager.CreateCustomer(spawn);
+                    }
                 }
                 // R for Remove
                 if (Input.GetKeyDown(KeyCode.R))
@@ -30,6 +34,13 @@ public class Main : MonoBehaviour
                     if (customerManager.GetAllCustomers().Count >= 1)
                     {
                         customerManager.RemoveCustomer(customerManager.GetRandomCustomer());
+                    }
+                    else
+                    {
+                        if (Developer.showMessages)
+                        {
+                            Debug.Log("You are try to delete a customer but there are none in the game!");
+                        }
                     }
                 }
             }

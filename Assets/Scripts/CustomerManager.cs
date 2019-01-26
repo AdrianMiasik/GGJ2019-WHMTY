@@ -47,6 +47,12 @@ public class CustomerManager : MonoBehaviour
             
             // Provide customer with a spawnpoint reference so when the customer is done being served, they know what spawn point they can clear
             _customer.spawnpoint = sp;
+
+            // TODO: Refactor the way this is done...But who am I kidding, its a game jam :D Never going to happen
+            // Provide spawnpoint with a reference to this class so if the spawnpoint no longer exists, the customer can destroy itself.
+            sp.customer = _customer;
+            _customer.manager = this;
+            
             
             // Mark the spawnpoint as occupied
             sp.Occupy();
