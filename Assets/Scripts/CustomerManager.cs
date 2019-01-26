@@ -4,16 +4,65 @@ using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
-    public SpawnpointManager spawnpointManager;
+    /// <summary>
+    /// Customer Prefab
+    /// </summary>
+    [SerializeField] protected Customer customerPrefab;
+    
+    /// <summary>
+    /// A list of all the active customers in the game.
+    /// </summary>
+    [SerializeField] private List<Customer> allCustomers = new List<Customer>();
 
-    private void Start()
+    /// <summary>
+    /// Returns a list of all the active customers in the game.
+    /// </summary>
+    /// <returns></returns>
+    public List<Customer> GetAllCustomers()
     {
-        Initialize();
+        return allCustomers;
     }
 
-    private void Initialize()
+    /// <summary>
+    /// Returns a random active customer.
+    /// </summary>
+    /// <returns></returns>
+    public Customer GetRandomCustomer()
     {
-        spawnpointManager.Generate();
-        // TODO: Add crabs to the spawns
+        return allCustomers[Random.Range(0, GetAllCustomers().Count)];
+    }
+    
+    /// <summary>
+    /// Create a customer.
+    /// </summary>
+    /// <param name="sp"></param>
+    public void CreateCustomer(Spawnpoint sp)
+    {
+        // If that spawnpoint is not occupied...
+        if (!sp.IsOccupied)
+        {
+            // Create a customer
+            Customer _customer = Instantiate(customerPrefab, sp.transform);
+            allCustomers.Add(_customer);
+            
+            // Provide customer with a spawnpoint reference so when the customer is done being served, they know what spawn point they can clear
+            _customer.spawnpoint = sp;
+            
+            // Mark the spawnpoint as occupied
+            sp.Occupy();
+        }
+    }
+
+    /// <summary>
+    /// Removes the customer from the game.
+    /// </summary>
+    /// <param name="_customer"></param>
+    public void RemoveCustomer(Customer _customer)
+    {
+        // TODO: Determine score
+        
+        _customer.spawnpoint.Unoccupy();
+        allCustomers.Remove(_customer);
+        Destroy(_customer.gameObject);
     }
 }

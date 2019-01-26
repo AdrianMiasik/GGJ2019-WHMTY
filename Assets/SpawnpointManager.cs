@@ -5,12 +5,16 @@ using UnityEngine;
 public class SpawnpointManager : MonoBehaviour
 {        
     public int numberOfStartingSpawnpoints = 4;
-    public GameObject spawnpointPrefab;
-    public Transform spawnpointContainer;
+    [SerializeField] protected GameObject spawnpointPrefab;
+    [SerializeField] protected Transform spawnpointContainer;
 
+    /// <summary>
+    /// Number of all the active spawn points
+    /// </summary>
     private int numberOfSpawnPoints;
     
     [SerializeField] private List<Spawnpoint> spawnpoints = new List<Spawnpoint>();
+    [SerializeField] public List<Spawnpoint> openSpawnpoints = new List<Spawnpoint>();
 
     /// <summary>
     /// Adds spawnpoints to the list. (Unless it has already been registered.)
@@ -66,10 +70,16 @@ public class SpawnpointManager : MonoBehaviour
     /// </summary>
     public void Destroy()
     {
-        // If there are no spawn points, thendon't do anything.
+        // If there are no spawn points, then don't do anything.
         if (spawnpoints.Count <= 0) return;
-        
+
         Spawnpoint lastRegisteredSpawn = spawnpoints[spawnpoints.Count - 1];
+
+        if (lastRegisteredSpawn.isOccupied)
+        {
+            Debug.LogWarning("Please get rid of the customer on the spawnpoint if you want to destroy this spawnpoint.");
+        }
+        
         Deregister(lastRegisteredSpawn);
         Destroy(lastRegisteredSpawn.gameObject);
     }
@@ -91,8 +101,25 @@ public class SpawnpointManager : MonoBehaviour
     public void Create()
     {
         GameObject spawnObj = Instantiate(spawnpointPrefab, spawnpointContainer.transform);
-        Spawnpoint spawnpoint = spawnObj.AddComponent<Spawnpoint>();
-            
+        Spawnpoint spawnpoint = spawnObj.AddComponent<Spawnpoint>();    
+        
         Register(spawnpoint);
+        openSpawnpoints.Add(spawnpoint);
+    }
+
+
+    /// <summary>
+    /// Returns a random open spawnpoint. If there are no open spawnpoints this will return null.
+    /// </summary>
+    /// <returns></returns>
+    public Spawnpoint GetOpenSpawnpoint()
+    {
+        if (openSpawnpoints.Count <= 0)
+        {
+            Debug.LogAssertion("There are no open spawnpoints. Please wait or create a new spawnpoint using Create()");
+            return null;
+        }
+
+        return openSpawnpoints[Random.Range(0, openSpawnpoints.Count)];
     }
 }
