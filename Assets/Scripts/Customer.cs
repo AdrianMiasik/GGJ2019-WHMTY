@@ -5,28 +5,38 @@ using UnityEngine.UI;
 
 public class Customer : MonoBehaviour
 {
-    private float m_tolerance = 10f;
-    private float m_timer;
-    private Image m_customerImage;
+    [HideInInspector] public Spawnpoint spawnpoint;
 
-    [SerializeField] private Sprite m_angryFace;
+    public CustomerDifficulty settings;
+    
+    // TODO: A class for the UI which will generate a picture of what the people want
+    public CustomerUIElement ui;
+
+    private float patience;
+
+    private float timeWaiting;
 
     private void Start()
     {
-        m_customerImage = GetComponent<Image>();
+        patience = Random.Range(settings.minTimeBeforeLeaving,
+            settings.maxTimeBeforeLeaving);
     }
 
     private void Update()
     {
-        m_timer += Time.deltaTime;
-        if (m_timer >= m_tolerance * 0.5f)
-        {
-            GetAngry();
-        }
+        //TODO: Lose Score
+        //TODO: Clear customer slot
+        //TODO: Show Walkaway animation
+        //TODO: Destroy or ObjectPool
+        
+        // Accumulate time
+        timeWaiting += Time.deltaTime;
 
-        if (m_timer >= m_tolerance)
+        // Patience of the customer
+        if (timeWaiting >= patience)
         {
-            WalkAway();
+            Debug.Log("You took too long, I'm leaving! I can find better service across the street.");
+            Remove();
         }
     }
 
@@ -38,17 +48,23 @@ public class Customer : MonoBehaviour
         //TODO: Bonus point if all match
     }
 
-    private void GetAngry()
+    /// <summary>
+    /// This reference gets passed through when this object is created.
+    /// </summary>
+    public CustomerManager manager;
+    
+    /// <summary>
+    /// Removes self from the game and also scores.
+    /// </summary>
+    public void Remove()
     {
-        m_customerImage.sprite = m_angryFace;
-    }
-
-    private void WalkAway()
-    {
-        //TODO: Lose Score
-        //TODO: Clear customer slot
-        //TODO: Show Walkaway animation
-        //TODO: Destroy or ObjectPool
+        if (manager == null)
+        {
+            Debug.LogAssertion("Please provide this class with a reference to the customer manager so we can remove ourselves from the appropriate lists.");
+            return;
+        }
+        
+        manager.RemoveCustomer(this);
     }
 }
     
