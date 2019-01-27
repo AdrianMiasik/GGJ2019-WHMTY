@@ -30,7 +30,7 @@ public class Customer : MonoBehaviour
         // Patience of the customer
         if (timeWaiting >= patience)
         {
-            Debug.Log("You took too long, I'm leaving! I can find better service across the street.");
+            animator.SetBool("isAngry", true);
             Remove();
         }
     }
@@ -53,14 +53,14 @@ public class Customer : MonoBehaviour
     {
         if (score <= 3)
         {
-            Remove();
-            yield break;
+            animator.SetBool("isAngry", true);
         }
         else
         {
             animator.SetBool("isHappy", true);
-            yield return new WaitForSeconds((float)animator.GetCurrentAnimatorClipInfo(0).Length);
         }
+
+        yield return new WaitForSeconds((float)animator.GetCurrentAnimatorClipInfo(0).Length);
         Remove();
     }
 
