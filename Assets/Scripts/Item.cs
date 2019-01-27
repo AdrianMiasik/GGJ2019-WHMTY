@@ -47,13 +47,16 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (isAttached) return;
 
         CheckIntoSlot();
-        Destroy(gameObject);
     }
 
     private float threshold = 40f;
     private void CheckIntoSlot()
     {
-        if (GameManager.Instance.shell == null) return;
+        if (GameManager.Instance.shell == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         foreach(Slot slot in GameManager.Instance.shell.Slots)
         {
@@ -65,6 +68,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 return;
             }
         }
+        Destroy(gameObject);
     }
 
     private void PutItemInSlot(Slot slot)
