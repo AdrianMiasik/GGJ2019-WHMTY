@@ -47,11 +47,14 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (isAttached) return;
 
         CheckIntoSlot();
+        Destroy(gameObject);
     }
 
     private float threshold = 40f;
     private void CheckIntoSlot()
     {
+        if (GameManager.Instance.shell == null) return;
+
         foreach(Slot slot in GameManager.Instance.shell.Slots)
         {
             float distance = Vector2.Distance(slot.transform.position, transform.position);
@@ -62,7 +65,6 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 return;
             }
         }
-        Destroy(gameObject);
     }
 
     private void PutItemInSlot(Slot slot)

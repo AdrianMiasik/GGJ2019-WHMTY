@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Main : MonoBehaviour
+public class Main : Singleton<Main>
 {
     public CustomerManager customerManager;
     public CustomerDifficulty settings;
