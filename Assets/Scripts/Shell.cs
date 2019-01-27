@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -12,13 +13,17 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private RectTransform m_DraggingPlane;
 
+    public Sprite[] shellImages;
+
     private void Start()
     {
         InitShell();
     }
 
     private void InitShell()
-    { 
+    {
+        GetComponent<Image>().sprite = shellImages[Random.Range(0, 2)];
+
         foreach(Slot slot in Slots)
         {
             slot.InitSlot();
