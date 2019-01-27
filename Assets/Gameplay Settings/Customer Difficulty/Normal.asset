@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTimeBetweenCustomers: 5
   maxTimeBetweenCustomers: 10
-  minTimeBeforeLeaving: 5
-  maxTimeBeforeLeaving: 10
+  minTimeBeforeLeaving: 20
+  maxTimeBeforeLeaving: 30
