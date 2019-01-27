@@ -59,7 +59,7 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         ResetShell();
 
         float distanceToTrashCan = Vector2.Distance(TrashCan.Instance.transform.position, transform.position);
-        if (distanceToTrashCan < 100f)
+        if (distanceToTrashCan < 200f)
         {
             Destroy(gameObject);
         }
