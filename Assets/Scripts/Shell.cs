@@ -80,7 +80,6 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
                 score++;
             }
         }
-        Debug.LogError("Calculate score: " + 10f / Slots.Count * score);
         return 10f/Slots.Count*score;
     }
 
