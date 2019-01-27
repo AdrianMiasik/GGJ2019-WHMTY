@@ -26,6 +26,11 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            GameOver();
+        }
+
         UpdateTimerText();
     }
 
@@ -83,5 +88,10 @@ public class GameManager : Singleton<GameManager>
     public void AddTime(float time)
     {
         timer += time;
+    }
+
+    public void GameOver()
+    {
+        Debug.LogError("Game Over");
     }
 }

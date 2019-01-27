@@ -8,7 +8,7 @@ public class Customer : MonoBehaviour
     public Spawnpoint spawnpoint { get; set; }
 
     public CustomerDifficulty settings;
-    public RawImage bubbleImage;
+    public Image bubbleImage;
 
     private Animator animator;
     private float patience;
@@ -47,11 +47,6 @@ public class Customer : MonoBehaviour
         Destroy(shell.gameObject);
         GameManager.Instance.RateStore(score);
         StartCoroutine(OnShellRecevied(score));
-    }
-
-    public void ShowDesiredShell()
-    {
-
     }
 
     private IEnumerator OnShellRecevied(int score)
