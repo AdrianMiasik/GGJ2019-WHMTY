@@ -14,7 +14,7 @@ public class Credits : MonoBehaviour
 
     private void Start()
     {
-        float speed = 500f;
+        float speed = 50f;
         RectTransform rectTransform = GetComponent<RectTransform>();
         StartCoroutine(ShowCredits(rectTransform, speed));
     }
