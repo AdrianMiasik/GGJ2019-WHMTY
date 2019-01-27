@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -10,12 +9,15 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Vector3 m_dragOffset;
     private bool isAttached;
 
+    public Sprite[] itemImages;
+
     public enum ItemType
     {
-        one = 1,
-        two,
-        three,
-        four
+        Feather = 1,
+        SeaWeed,
+        Umbrella,
+        SquareWindow,
+        CircleWindow
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -99,6 +101,8 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     // Start is called before the first frame update
     void Start()
     {
-        Type = (ItemType)Random.Range(1, 4);
+        int itemType = Random.Range(1, 5);
+        Type = (ItemType)itemType;
+        GetComponent<Image>().sprite = itemImages[itemType - 1];
     }
 }
