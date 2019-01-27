@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe26cea9d654444a95d8b1b4a0f429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetItem: 0
 --- !u!1 &2543222823006180833
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe26cea9d654444a95d8b1b4a0f429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetItem: 0
 --- !u!1 &2543222823035095554
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe26cea9d654444a95d8b1b4a0f429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetItem: 0
 --- !u!1 &2543222823223580845
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe26cea9d654444a95d8b1b4a0f429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetItem: 0
 --- !u!1 &2543222823391221942
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe26cea9d654444a95d8b1b4a0f429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetItem: 0
 --- !u!1 &2543222823400978697
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe26cea9d654444a95d8b1b4a0f429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetItem: 0
 --- !u!1 &2912996228456734865
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +600,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ab5f058c97b6e43548d5f0000a486b3f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -623,3 +629,6 @@ MonoBehaviour:
   - {fileID: 6823465335342072539}
   - {fileID: 6823465335267713919}
   - {fileID: 6823465334616723572}
+  shellImages:
+  - {fileID: 21300000, guid: 9908e0789f8f24ac1ba689fd0ee47abb, type: 3}
+  - {fileID: 21300000, guid: ab5f058c97b6e43548d5f0000a486b3f, type: 3}
