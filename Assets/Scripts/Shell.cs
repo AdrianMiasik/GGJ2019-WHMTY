@@ -103,6 +103,9 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private void OnDestroy()
     {
-        GameManager.Instance.CreateNewShell();
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.CreateNewShell();
+        }
     }
 }
