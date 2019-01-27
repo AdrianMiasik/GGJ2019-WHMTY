@@ -43,18 +43,25 @@ public class Customer : MonoBehaviour
     public void ReceiveShell(Shell shell)
     {
         Debug.LogError("Received shell");
-        shell.CalculateScore();
+        int score = (int)shell.CalculateScore();
         Destroy(shell.gameObject);
-        Remove();
+        StartCoroutine(OnShellRecevied(score));
     }
      
 
-    public void OnShellReceived()
+    private IEnumerator OnShellRecevied(int score)
     {
-        //TODO: Check how many slots are matching
-        //TODO: Points based on how many are matching
-        //TODO: Lose point if nothing matches
-        //TODO: Bonus point if all match
+        if (score <= 3)
+        {
+            yield break;
+        }
+        else
+        {
+            Animator animator = GetComponent<Animator>();
+            animator.SetBool("isHappy", true);
+            yield return new WaitForSeconds((float)animator.GetCurrentAnimatorClipInfo(0).Length);
+        }
+        Remove();
     }
 
     /// <summary>
