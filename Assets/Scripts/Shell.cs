@@ -100,4 +100,9 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
             rt.position = globalMousePos;
         }
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.CreateNewShell();
+    }
 }

@@ -23,12 +23,7 @@ public class Customer : MonoBehaviour
     }
 
     private void Update()
-    {
-        //TODO: Lose Score
-        //TODO: Clear customer slot
-        //TODO: Show Walkaway animation
-        //TODO: Destroy or ObjectPool
-        
+    {   
         // Accumulate time
         timeWaiting += Time.deltaTime;
 
