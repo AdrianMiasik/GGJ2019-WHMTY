@@ -16,8 +16,7 @@ public class Customer : MonoBehaviour
 
     private void Start()
     {
-        patience = Random.Range(settings.minTimeBeforeLeaving,
-            settings.maxTimeBeforeLeaving);
+        patience = 20;
 
         animator = GetComponent<Animator>();
     }
@@ -28,9 +27,13 @@ public class Customer : MonoBehaviour
         timeWaiting += Time.deltaTime;
 
         // Patience of the customer
-        if (timeWaiting >= patience)
+        if (timeWaiting >= patience / 2)
         {
             animator.SetBool("isAngry", true);
+        }
+
+        if (timeWaiting >= patience)
+        {
             Remove();
         }
     }
@@ -58,6 +61,7 @@ public class Customer : MonoBehaviour
         else
         {
             animator.SetBool("isHappy", true);
+            GameManager.Instance.AddTime(2f);
         }
 
         yield return new WaitForSeconds((float)animator.GetCurrentAnimatorClipInfo(0).Length);
