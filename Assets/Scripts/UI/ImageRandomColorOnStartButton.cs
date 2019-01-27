@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(ImageRandomColorOnStart))]
 public class ImageRandomColorOnStartButton : Editor
 {
@@ -15,3 +16,4 @@ public class ImageRandomColorOnStartButton : Editor
         }
     }
 }
+#endif
