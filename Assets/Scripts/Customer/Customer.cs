@@ -40,6 +40,7 @@ public class Customer : MonoBehaviour
         Debug.LogError("Received shell");
         int score = shell.CalculateScore();
         Destroy(shell.gameObject);
+        GameManager.Instance.RateStore(score);
         StartCoroutine(OnShellRecevied(score));
     }
      
