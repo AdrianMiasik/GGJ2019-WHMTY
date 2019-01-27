@@ -7,12 +7,28 @@ public class Customer : MonoBehaviour
 {
     public Spawnpoint spawnpoint { get; set; }
 
+
     public CustomerDifficulty settings;
     public Image bubbleImage;
 
     private Animator animator;
     private float patience;
     private float timeWaiting;
+    [SerializeField] private Transform bubble;
+
+    public GameObject Item;
+    public List<GameObject> WantedItemList;
+
+    private void AssignWantedItems()
+    {
+        WantedItemList = new List<GameObject>();
+        for(int i = 0; i < 6; i++)
+        {
+            GameObject newItem = Instantiate(Item, bubble);
+            newItem.transform.position += new Vector3(-70 + i * 30f, -10f, 0f);
+            WantedItemList.Add(newItem);
+        }
+    }
 
     private void Start()
     {
@@ -20,6 +36,7 @@ public class Customer : MonoBehaviour
             settings.maxTimeBeforeLeaving);
 
         animator = GetComponent<Animator>();
+        AssignWantedItems();
     }
 
     private void Update()
