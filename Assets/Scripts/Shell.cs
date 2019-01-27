@@ -82,19 +82,6 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         }
     }
 
-    public int CalculateScore()
-    {
-        float score = 0f;
-        foreach(Slot slot in Slots)
-        {
-            if (slot.IsMatchItem())
-            {
-                score++;
-            }
-        }
-
-        return (int)Mathf.Round(10f / Slots.Count*score);
-    }
 
     private void SetDraggedPosition(PointerEventData data)
     {

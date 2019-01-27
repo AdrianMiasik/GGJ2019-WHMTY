@@ -5,9 +5,9 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     // target item
-    public bool IsAttached { get { return attachedItem; } }
+    public bool IsAttached { get { return attachedItem != null; } }
     [SerializeField] private Item.ItemType targetItem;
-    private Item attachedItem;
+    public Item attachedItem;
 
     public bool IsMatchItem()
     {

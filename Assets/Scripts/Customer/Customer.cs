@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Customer : MonoBehaviour
 {
@@ -17,22 +18,24 @@ public class Customer : MonoBehaviour
     [SerializeField] private Transform bubble;
 
     public GameObject Item;
-    public List<GameObject> WantedItemList;
+    private List<Item> WantedItemList;
+    public HashSet<Item.ItemType> WantedItems;
 
     private void AssignWantedItems()
     {
-        WantedItemList = new List<GameObject>();
+        WantedItemList = new List<Item>();
         for(int i = 0; i < 6; i++)
         {
             GameObject newItem = Instantiate(Item, bubble);
             newItem.transform.position += new Vector3(-70 + i * 30f, -10f, 0f);
-            WantedItemList.Add(newItem);
+            WantedItemList.Add(newItem.GetComponent<Item>());
+            Debug.LogError("item: " + newItem.GetComponent<Item>());
         }
     }
 
     private void Start()
     {
-        patience = 20;
+        patience = 200;
 
         animator = GetComponent<Animator>();
         AssignWantedItems();
@@ -63,10 +66,35 @@ public class Customer : MonoBehaviour
     public void ReceiveShell(Shell shell)
     {
         Debug.LogError("Received shell");
-        int score = shell.CalculateScore();
+        int score = CalculateScore(shell);
         Destroy(shell.gameObject);
         GameManager.Instance.RateStore(score);
         StartCoroutine(OnShellRecevied(score));
+    }
+
+    private int CalculateScore(Shell shell)
+    {
+        Debug.LogError("calculate score");
+        WantedItems = new HashSet<Item.ItemType>();
+        foreach(Item v in WantedItemList)
+        {
+            WantedItems.Add(v.Type);
+        }
+        float score = 0f;
+        foreach (Slot slot in shell.Slots)
+        {
+            if (slot.IsAttached)
+            {
+                Debug.LogError("check score");
+                if (WantedItems.Remove(slot.attachedItem.Type))
+                {
+                    score++;
+                    Debug.LogError("Find num: " + score);
+                }
+            }
+        }
+        Debug.LogError("score: " + (int)Mathf.Round(10f / shell.Slots.Count * score));
+        return (int)Mathf.Round(10f / shell.Slots.Count * score);
     }
 
     private IEnumerator OnShellRecevied(int score)
