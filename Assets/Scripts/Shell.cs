@@ -86,7 +86,7 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
             }
         }
 
-        return (int).Round(10f / Slots.Count*score);
+        return (int)Mathf.Round(10f / Slots.Count*score);
     }
 
     private void SetDraggedPosition(PointerEventData data)
