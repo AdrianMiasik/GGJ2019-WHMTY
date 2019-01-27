@@ -57,6 +57,13 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     public void OnEndDrag(PointerEventData eventData)
     {
         ResetShell();
+
+        float distanceToTrashCan = Vector2.Distance(TrashCan.Instance.transform.position, transform.position);
+        if (distanceToTrashCan < 100f)
+        {
+            Destroy(gameObject);
+        }
+
         SendShellToCustomer();
     }
 
