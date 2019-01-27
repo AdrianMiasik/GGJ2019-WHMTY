@@ -19,7 +19,6 @@ public class Customer : MonoBehaviour
 
     public GameObject Item;
     private List<Item> WantedItemList;
-    public HashSet<Item.ItemType> WantedItems;
 
     private void AssignWantedItems()
     {
@@ -74,22 +73,21 @@ public class Customer : MonoBehaviour
 
     private int CalculateScore(Shell shell)
     {
-        Debug.LogError("calculate score");
-        WantedItems = new HashSet<Item.ItemType>();
-        foreach(Item v in WantedItemList)
-        {
-            WantedItems.Add(v.Type);
-        }
+        Debug.LogError("calculate score"); 
         float score = 0f;
         foreach (Slot slot in shell.Slots)
         {
             if (slot.IsAttached)
             {
                 Debug.LogError("check score");
-                if (WantedItems.Remove(slot.attachedItem.Type))
+                foreach(Item v in WantedItemList)
                 {
-                    score++;
-                    Debug.LogError("Find num: " + score);
+                    if(v.Type == slot.attachedItem.Type)
+                    {
+                        WantedItemList.Remove(v);
+                        score++;
+                        break;
+                    }
                 }
             }
         }
