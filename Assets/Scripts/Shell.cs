@@ -75,7 +75,7 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         }
     }
 
-    public float CalculateScore()
+    public int CalculateScore()
     {
         float score = 0f;
         foreach(Slot slot in Slots)
@@ -85,7 +85,8 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
                 score++;
             }
         }
-        return 10f/Slots.Count*score;
+
+        return (int).Round(10f / Slots.Count*score);
     }
 
     private void SetDraggedPosition(PointerEventData data)
@@ -103,7 +104,7 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
+        if (GameManager.Instance)
         {
             GameManager.Instance.CreateNewShell();
         }
