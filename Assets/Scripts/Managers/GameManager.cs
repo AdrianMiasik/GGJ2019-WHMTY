@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -90,8 +91,8 @@ public class GameManager : Singleton<GameManager>
         timer += time;
     }
 
-    public void GameOver()
+    private void GameOver()
     {
-        Debug.LogError("Game Over");
+        SceneManager.LoadScene("Credits");
     }
 }

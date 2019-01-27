@@ -22,7 +22,7 @@ public class Credits : MonoBehaviour
 
     private IEnumerator ShowCredits(RectTransform rectTransform, float scrollSpeed)
     {
-        while(rectTransform.localPosition.y <= 1100)
+        while(rectTransform.localPosition.y <= 1325)
         {
             rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, rectTransform.localPosition.y + scrollSpeed * Time.deltaTime, rectTransform.localPosition.z);
             yield return null;
