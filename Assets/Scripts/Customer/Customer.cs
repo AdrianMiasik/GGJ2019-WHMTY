@@ -40,6 +40,19 @@ public class Customer : MonoBehaviour
         }
     }
 
+    public void ReceiveShell(Shell shell)
+    {
+        Debug.LogError("Received shell");
+        CalculateScore();
+        Destroy(shell.gameObject);
+        Remove();
+    }
+
+    private void CalculateScore()
+    {
+        Debug.LogError("Calculate score");
+    }
+
     public void OnShellReceived()
     {
         //TODO: Check how many slots are matching

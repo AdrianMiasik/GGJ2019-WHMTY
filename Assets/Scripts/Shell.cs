@@ -52,8 +52,23 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     public void OnEndDrag(PointerEventData eventData)
     {
         ResetShell();
+        SendShellToCustomer();
     }
 
+    private float threshold = 100f;
+    private void SendShellToCustomer()
+    {
+        foreach(Customer c in Main.Instance.customerManager.GetAllCustomers())
+        {
+            float distance = Vector2.Distance(c.transform.position, transform.position);
+
+            if(distance < threshold)
+            {
+                c.ReceiveShell(this);
+                return;
+            }
+        }
+    }
 
     private void SetDraggedPosition(PointerEventData data)
     {
