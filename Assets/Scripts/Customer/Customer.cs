@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class Customer : MonoBehaviour
 {
-    [HideInInspector] public Spawnpoint spawnpoint;
+    public Spawnpoint spawnpoint { get; set; }
 
     public CustomerDifficulty settings;
-    
-    // TODO: A class for the UI which will generate a picture of what the people want
-    public CustomerUIElement ui;
+    public RawImage bubbleImage;
 
+    private Animator animator;
     private float patience;
-
     private float timeWaiting;
 
     private void Start()
     {
         patience = Random.Range(settings.minTimeBeforeLeaving,
             settings.maxTimeBeforeLeaving);
+
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -35,6 +35,11 @@ public class Customer : MonoBehaviour
         }
     }
 
+    public void ShowDialogueBubble()
+    {
+        bubbleImage.gameObject.SetActive(true);
+    }
+
     public void ReceiveShell(Shell shell)
     {
         Debug.LogError("Received shell");
@@ -43,7 +48,11 @@ public class Customer : MonoBehaviour
         GameManager.Instance.RateStore(score);
         StartCoroutine(OnShellRecevied(score));
     }
-     
+
+    public void ShowDesiredShell()
+    {
+
+    }
 
     private IEnumerator OnShellRecevied(int score)
     {
@@ -54,7 +63,6 @@ public class Customer : MonoBehaviour
         }
         else
         {
-            Animator animator = GetComponent<Animator>();
             animator.SetBool("isHappy", true);
             yield return new WaitForSeconds((float)animator.GetCurrentAnimatorClipInfo(0).Length);
         }
