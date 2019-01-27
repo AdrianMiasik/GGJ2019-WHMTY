@@ -53,6 +53,7 @@ public class Customer : MonoBehaviour
     {
         if (score <= 3)
         {
+            Remove();
             yield break;
         }
         else
