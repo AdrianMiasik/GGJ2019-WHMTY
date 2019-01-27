@@ -32,12 +32,12 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private void ShrinkShell()
     {
-        transform.localScale *= 0.1f;
+        transform.localScale *= 0.5f;
     }
 
     private void ResetShell()
     {
-        transform.localScale *= 10f;
+        transform.localScale *= 2f;
     } 
 
     public void OnBeginDrag(PointerEventData eventData)
