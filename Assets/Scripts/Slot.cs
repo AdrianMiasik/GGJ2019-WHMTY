@@ -6,9 +6,21 @@ public class Slot : MonoBehaviour
 {
     // target item
     public bool IsAttached { get { return attachedItem; } }
-    private Item.ItemType targetItem;
+    [SerializeField] private Item.ItemType targetItem;
     private Item attachedItem;
 
+    public bool IsMatchItem()
+    {
+        if(attachedItem != null && (int)targetItem != 0 && (int)attachedItem.Type != 0)
+        {
+            return targetItem == attachedItem.Type;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
     public void InitSlot()
     {
         AssignTargetItem();

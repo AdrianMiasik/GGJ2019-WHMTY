@@ -70,6 +70,20 @@ public class Shell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         }
     }
 
+    public float CalculateScore()
+    {
+        float score = 0f;
+        foreach(Slot slot in Slots)
+        {
+            if (slot.IsMatchItem())
+            {
+                score++;
+            }
+        }
+        Debug.LogError("Calculate score: " + 10f / Slots.Count * score);
+        return 10f/Slots.Count*score;
+    }
+
     private void SetDraggedPosition(PointerEventData data)
     {
         if (data.pointerEnter != null && data.pointerEnter.transform as RectTransform != null)
