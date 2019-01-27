@@ -148,7 +148,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -600}
-  m_SizeDelta: {x: 600, y: 400}
+  m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26497164
 MonoBehaviour:
@@ -170,13 +170,39 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "               Crab Shell Store\n\n                      Credits\n\nProgramming:
-    \            Huiyoung Jung\n                                                Lu
-    Ang\n                                      Adrian Miasik\n\n                 Art:
-    \                            John\n                                                 Mason"
+  m_text: 'Shell sweet shell
+
+
+    Credits
+
+
+
+    Programming
+
+
+    Huiyoung Jung
+
+    Lu Ang
+
+    Adrian Miasik
+
+
+
+    Art
+
+
+    John
+
+    Mason
+
+
+    Music
+
+    https://www.bensound.com'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a3724296b3c3bdb4381ec499ca19afb1, type: 2}
+  m_sharedMaterial: {fileID: 21783610695935296, guid: a3724296b3c3bdb4381ec499ca19afb1,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -208,7 +234,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -219,7 +245,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 266
+  m_firstOverflowCharacterIndex: 63
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -242,12 +268,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 26497164}
-    characterCount: 320
+    characterCount: 126
     spriteCount: 0
-    spaceCount: 245
-    wordCount: 15
+    spaceCount: 23
+    wordCount: 19
     linkCount: 0
-    lineCount: 10
+    lineCount: 19
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
