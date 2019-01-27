@@ -6,6 +6,7 @@ using TMPro;
 public class Credits : MonoBehaviour
 {
     private TextMeshProUGUI tmpUGUI;
+    private float alpha = 1;
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public class Credits : MonoBehaviour
 
     private void Start()
     {
-        float speed = 50f;
+        float speed = 50;
         RectTransform rectTransform = GetComponent<RectTransform>();
         StartCoroutine(ShowCredits(rectTransform, speed));
     }
@@ -35,13 +36,24 @@ public class Credits : MonoBehaviour
 
         rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, 0, rectTransform.localPosition.z);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
+
+        while (tmpUGUI.color.a > 0)
+        {
+            alpha -= 0.25f * Time.deltaTime;
+            tmpUGUI.color = new Color(tmpUGUI.color.r, tmpUGUI.color.g, tmpUGUI.color.b, alpha);
+            yield return null;
+        }
+
+        tmpUGUI.color = new Color(tmpUGUI.color.a, tmpUGUI.color.g, tmpUGUI.color.b, 0);
+
+        yield return new WaitForSeconds(1f);
 
         LoadMainMenu();
     }
 
     private void LoadMainMenu()
     {
-        Debug.Log("Loading Main Menu!");
+        SceneManager.LoadScene(0);
     }
 }
