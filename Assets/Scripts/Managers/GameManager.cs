@@ -13,10 +13,20 @@ public class GameManager : Singleton<GameManager>
     private int totalScore;
     private int averageRating;  // Rating 1 = 0.5 Star, Rating 10 = 5 Star
 
+    public TMPro.TextMeshProUGUI timerText;
+    private float timer = 60;
+
     private void Start()
     {
         CreateNewShell();
         UpdateRatingIcon();
+        UpdateTimerText();
+    }
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        UpdateTimerText();
     }
 
     public void CreateNewShell()
@@ -63,5 +73,15 @@ public class GameManager : Singleton<GameManager>
                 star.ShowEmptyStar();
             }
         }
+    }
+
+    private void UpdateTimerText()
+    {
+        timerText.text = string.Format("Time Left: {0}", ((int)timer).ToString());
+    }
+
+    public void AddTime(float time)
+    {
+        timer += time;
     }
 }
