@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Conveyer : MonoBehaviour
 {
-    private float speed = 175f;
+    private float speed = 5f;
     [SerializeField] private GameObject otherConveyer;
     [SerializeField] private List<GameObject> decoratorPrefabs;
     public GameObject Item;
@@ -20,20 +20,40 @@ public class Conveyer : MonoBehaviour
         AddItems();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        float posY = rectTransform.localPosition.y - Time.deltaTime * speed;
+        float posY = rectTransform.localPosition.y - speed;
         rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, posY, rectTransform.localPosition.z);
 
-        if (rectTransform.localPosition.y <= -1248) // Reached bottom
+        if (this.name == "Conveyor2")
         {
-            ResetConveyer();
+            if (rectTransform.localPosition.y <= -rectTransform.rect.height) // Reached bottom
+            {
+                ResetConveyer();
+            }
         }
+        else
+        {
+            if (rectTransform.localPosition.y <= -rectTransform.rect.height + speed) // Reached bottom
+            {
+                ResetConveyer();
+            }
+        }
+
     }
 
     private void ResetConveyer()
     {
-        rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, 1248, rectTransform.localPosition.z);
+        float posY;
+        if (this.name == "Conveyor2")
+        {
+            posY = otherConveyer.GetComponent<RectTransform>().localPosition.y + rectTransform.rect.height;
+        }
+        else
+        {
+            posY = otherConveyer.GetComponent<RectTransform>().localPosition.y + rectTransform.rect.height - speed;
+        }
+        rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, posY, rectTransform.localPosition.z);
         foreach (Transform slot in ConveyerSlots)
         {
             if (slot.childCount > 0)

@@ -841,7 +841,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &361621257
 RectTransform:
@@ -1092,8 +1092,6 @@ MonoBehaviour:
     type: 3}
   shellSpawner: {fileID: 202186252}
   ratingIcons: {fileID: 80432328}
-  lifeIcons: {fileID: 0}
-  life: 5
 --- !u!114 &659665718
 MonoBehaviour:
   m_ObjectHideFlags: 0
