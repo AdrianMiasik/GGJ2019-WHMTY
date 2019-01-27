@@ -11,10 +11,7 @@ public class GameManager : Singleton<GameManager>
     public Transform ratingIcons;
     private int customerCount;
     private int totalScore;
-    private int averageRating;
-
-    public Transform lifeIcons;
-    public int life = 5;
+    private int averageRating;  // Rating 1 = 0.5 Star, Rating 10 = 5 Star
 
     private void Start()
     {
@@ -44,30 +41,26 @@ public class GameManager : Singleton<GameManager>
 
     private void UpdateRatingIcon()
     {
+        //averageRating
+        int numOfFullStar = averageRating / 2;
+        bool halfStar = (averageRating % 2 == 1) ? true : false;
+
         for (int i = 0; i < ratingIcons.childCount; i++)
         {
-            if (i <= averageRating - 1)
+            Star star = ratingIcons.GetChild(i).GetComponent<Star>();
+            if (i < numOfFullStar)
             {
-                ratingIcons.GetChild(i).gameObject.SetActive(true);
+                star.ShowFullStar();
             }
-            else
-            {
-                ratingIcons.GetChild(i).gameObject.SetActive(false);
-            }
-        }
-    }
 
-    private void UpdateLifeIcon()
-    {
-        for (int i = 0; i < lifeIcons.childCount; i++)
-        {
-            if (i <= life - 1)
+            if (halfStar && i == numOfFullStar)
             {
-                lifeIcons.GetChild(i).gameObject.SetActive(true);
+                star.ShowHalfStar();
             }
-            else
+
+            if (i > numOfFullStar)
             {
-                lifeIcons.GetChild(i).gameObject.SetActive(false);
+                star.ShowEmptyStar();
             }
         }
     }
