@@ -21,7 +21,7 @@ public class Credits : MonoBehaviour
 
     private IEnumerator ShowCredits(RectTransform rectTransform, float scrollSpeed)
     {
-        while(rectTransform.localPosition.y <= 0)
+        while(rectTransform.localPosition.y <= 1000)
         {
             rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, rectTransform.localPosition.y + scrollSpeed * Time.deltaTime, rectTransform.localPosition.z);
             yield return null;
@@ -29,7 +29,7 @@ public class Credits : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        tmpUGUI.text = "Created by Melted Pixel\n" + "\n" +
+        tmpUGUI.text = "\n\n\n\nCreated by Melted Pixel\n" + "\n" +
         	"Global Game Jam, 2019";
         tmpUGUI.alignment = TextAlignmentOptions.Center;
 
